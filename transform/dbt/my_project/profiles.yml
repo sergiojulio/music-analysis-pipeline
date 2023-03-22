@@ -1,0 +1,9 @@
+my_project:
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      path: '/home/sergio/dev/python/music-analysis-pipeline/datalake/db.duckdb'
+      extensions:
+        - httpfs
+        - parquet
