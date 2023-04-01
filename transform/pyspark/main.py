@@ -1,10 +1,4 @@
 # -*- coding: utf-8 -*-
-"""
-Created 2022-03-17
-
-@author: Sergio Sierra
-
-"""
 import shutil
 from pyspark.sql import SparkSession
 from pyspark.sql import functions as func  # este alias es para evitar sobre escritura de funciones
