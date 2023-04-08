@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import shutil
 from pyspark.sql import SparkSession
-from pyspark.sql import functions as func  # este alias es para evitar sobre escritura de funciones
+from pyspark.sql import functions as func
 from pyspark.sql.types import IntegerType, StringType
 
 spark = SparkSession.builder.appName("homologacion").getOrCreate()

@@ -11,7 +11,6 @@ print(df_ge.head())
 
 print(df_ge.expect_column_values_to_be_unique(column="utc_time"))
 
-
 # print(df['artist'].value_counts().head(10))
 # df.groupBy('artist').count().orderBy('count', ascending=False).show()
 # print(df.iloc[1])
