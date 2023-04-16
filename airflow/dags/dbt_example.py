@@ -31,7 +31,7 @@ with DAG(
               ]
           ),
           bash_command=f"cd {dbt_path}" # Go to the path containing your dbt project
-          + ' && eval "\$(pyenv init -)"' # Load Pyenv
+          + ' && eval "\$(pyenv init -)"' # Load Pyenv 
           + ' && eval "\$(pyenv virtualenv-init -)"' # Load Pyenv Virtualenv
           + " && pyenv activate demo_dbt" # Activate the dbt virtual environment
           + f" && dbt run --models {node_info['name']}", # run the model!
