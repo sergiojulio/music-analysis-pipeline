@@ -6,7 +6,7 @@ from airflow.operators.bash import BashOperator
 
 HOME = "/home/sergio/dev/python/music-analysis-pipeline" # os.environ["HOME"] # retrieve the location of your home folder
 dbt_path = os.path.join(HOME, "/transform/dbt/my_project") # path to your dbt project
-manifest_path = os.path.join(dbt_path, "/target/manifest.json") # path to manifest.json
+manifest_path = os.path.join(dbt_path, "/home/sergio/dev/python/music-analysis-pipeline/transform/dbt/my_project/target/manifest.json") # path to manifest.json
 
 with open(manifest_path) as f: # Open manifest.json
   manifest = json.load(f) # Load its contents into a Python Dictionary
