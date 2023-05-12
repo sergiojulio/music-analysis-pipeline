@@ -8,10 +8,8 @@ if __name__ == "__main__":
 
     # sc = SparkContext(appName="CSV2Parquet")
     # sqlContext = SQLContext(sc)
-
     spark = SparkSession.builder.appName("homologacion").getOrCreate()
     sc = spark.sparkContext
-
 
     schema = StructType([
                 StructField("col1", StringType(), True),
@@ -28,7 +26,6 @@ if __name__ == "__main__":
 
     # rdd = sc.textFile('/home/sergio/dev/python/music-analysis-pipeline/datalake/raw/albums.csv').map(lambda line: line.split(","))
     # df = sqlContext.createDataFrame(rdd, schema)
-
     df = spark.read.option("header", True).format("csv").option("delimiter", ',').load("/home/sergio/dev/python/music-analysis-pipeline/datalake/raw/albums.csv")
 
     parquetfilename = os.path.join(dirname,'output.parquet')   
