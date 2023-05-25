@@ -90,6 +90,7 @@
   </dia:diagramdata>
   <dia:layer name="Background" visible="true" connectable="false"/>
   <dia:layer name="Background" visible="true" connectable="false"/>
+  <dia:layer name="Background" visible="true" connectable="false"/>
   <dia:layer name="Background" visible="true" connectable="true" active="true">
     <dia:object type="Flowchart - Magnetic Disk" version="1" id="O0">
       <dia:attribute name="obj_pos">
@@ -310,13 +311,13 @@
     </dia:object>
     <dia:object type="Flowchart - Box" version="0" id="O5">
       <dia:attribute name="obj_pos">
-        <dia:point val="35.1592,6.09789"/>
+        <dia:point val="34,6"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="35.1092,6.04789;41.5092,16.4979"/>
+        <dia:rectangle val="33.95,5.95;40.35,16.4"/>
       </dia:attribute>
       <dia:attribute name="elem_corner">
-        <dia:point val="35.1592,6.09789"/>
+        <dia:point val="34,6"/>
       </dia:attribute>
       <dia:attribute name="elem_width">
         <dia:real val="6.3000000000000007"/>
@@ -342,7 +343,7 @@
             <dia:real val="0.80000000000000004"/>
           </dia:attribute>
           <dia:attribute name="pos">
-            <dia:point val="38.3092,11.5579"/>
+            <dia:point val="37.15,11.46"/>
           </dia:attribute>
           <dia:attribute name="color">
             <dia:color val="#000000ff"/>

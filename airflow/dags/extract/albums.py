@@ -7,12 +7,13 @@ from os.path import expanduser
 # path raw file name, 
 # arg table, 
 
+
 def pandas_sqlite_csv():
     conn = sqlite3.connect('/home/sergio/dev/python/music-analysis-pipeline/inputs/spotify.sqlite')
-    #cursor = conn.cursor()
+    # cursor = conn.cursor()
     # weirdos chars
     conn.text_factory = str
-    table = pd.read_sql('SELECT * FROM albums LIMIT 100' ,conn)
+    table = pd.read_sql('SELECT * FROM albums LIMIT 100', conn)
     table.to_csv('/home/sergio/dev/python/music-analysis-pipeline/datalake/raw/albums.csv', index=False, encoding='utf-8')
 
 
