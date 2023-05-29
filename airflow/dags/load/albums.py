@@ -24,9 +24,10 @@ if __name__ == "__main__":
 
     csvfilename = os.path.join(dirname,'Temp.csv')   
 
-    # rdd = sc.textFile('/home/sergio/dev/python/music-analysis-pipeline/datalake/raw/albums.csv').map(lambda line: line.split(","))
-    # df = sqlContext.createDataFrame(rdd, schema)
-    df = spark.read.option("header", True).format("csv").option("delimiter", ',').load("/home/sergio/dev/python/music-analysis-pipeline/datalake/raw/albums.csv")
+    # rdd = sc.textFile('/home/sergio/dev/python/music-analysis-pipeline/datalake/raw/albums.csv').map(lambda line:
+    # line.split(",")) df = sqlContext.createDataFrame(rdd, schema)
+    df = spark.read.option("header", True).format("csv").option("delimiter", ',').load("/home/sergio/dev/python/music"
+                                                                                       "-analysis-pipeline/datalake/raw/albums.csv")
 
     parquetfilename = os.path.join(dirname,'output.parquet')   
 
