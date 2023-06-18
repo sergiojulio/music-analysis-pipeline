@@ -41,12 +41,10 @@ if __name__ == "__main__":
     # create a colum with process date
     print(datetime.datetime.now())
 
-    df = df.withColumn('process_date', lit(datetime.datetime.now()).cast(StringType()))
+    df = df.withColumn('process_date', lit(datetime.datetime.now()).cast(StringType()))  # change to date time
 
     parquetfilename = os.path.join(dirname, 'output.parquet')
 
     df.write.mode('overwrite').parquet('/home/sergio/dev/python/music-analysis-pipeline/datalake/parquet/albums.parquet')
 
     df.show()
-
-# PYSPARK_PYTHON and PYSPARK_DRIVER_PYTHON
