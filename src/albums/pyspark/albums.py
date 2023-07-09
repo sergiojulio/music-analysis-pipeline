@@ -25,7 +25,7 @@ if __name__ == "__main__":
                 StructField("name", StringType(), True),
                 StructField("album_group", StringType(), True),
                 StructField("album_type", StringType(), True),
-                StructField("release_date", StringType(), True),  # change to date time
+                StructField("release_date", StringType(), True),
                 StructField("popularity", DecimalType(12, 0), True)
             ])
     
