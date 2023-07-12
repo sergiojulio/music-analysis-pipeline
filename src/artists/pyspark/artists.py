@@ -35,7 +35,7 @@ if __name__ == "__main__":
 
     df = spark.read.option("header", True).format("csv").schema(schema).option("delimiter", ',').load("/home/sergio/dev/python/music"
                                                                                        "-analysis-pipeline/datalake"
-                                                                                       "/raw/albums.csv")
+                                                                                       "/raw/artists.csv")
 
     # change column type
     """
@@ -58,6 +58,6 @@ if __name__ == "__main__":
 
     parquetfilename = os.path.join(dirname, 'output.parquet')
 
-    df.write.mode('overwrite').parquet('/home/sergio/dev/python/music-analysis-pipeline/datalake/parquet/albums.parquet')
+    df.write.mode('overwrite').parquet('/home/sergio/dev/python/music-analysis-pipeline/datalake/parquet/artists.parquet')
 
     df.show()

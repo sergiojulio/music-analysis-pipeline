@@ -19,7 +19,7 @@ with dag:
     step1 = BashOperator(
                 task_id='step1', 
                 bash_command='source /home/sergio/dev/python/music-analysis-pipeline/.env/bin/activate && python '
-                             '/home/sergio/dev/python/music-analysis-pipeline/src/albums/pandas/albums.py',
+                             '/home/sergio/dev/python/music-analysis-pipeline/src/artists/pandas/artists.py',
             )
     
     step2 = BashOperator(
@@ -27,7 +27,7 @@ with dag:
                 bash_command="""
                                 export JAVA_HOME="/usr/lib/jvm/java-11-openjdk-amd64/";
                                 export PATH=$PATH:$JAVA_HOME/bin;
-                                spark-submit /home/sergio/dev/python/music-analysis-pipeline/src/albums/pyspark/albums.py
+                                spark-submit /home/sergio/dev/python/music-analysis-pipeline/src/artists/pyspark/artists.py
                             """,
             )
 
