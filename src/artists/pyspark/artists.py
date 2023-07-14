@@ -39,7 +39,6 @@ if __name__ == "__main__":
 
     # change column type
     """
-    ERROR Utils: Aborting task
     org.apache.spark.SparkUpgradeException: You may get a different result due to the upgrading of Spark 3.0: 
     writing dates before 1582-10-15 or timestamps before 1900-01-01T00:00:00Z into Parquet INT96
     files can be dangerous, as the files may be read by Spark 2.x or legacy versions of Hive
