@@ -14,7 +14,7 @@ def pandas_sqlite_csv():
     # weirdos chars
     # conn.text_factory = str
     table = pd.read_sql('SELECT id, name, album_group, album_type, release_date, popularity FROM albums', conn)
-    # ""
+    #""
     table['id'] = table['id'].str.decode('utf8')
     # UnicodeDecodeError: 'utf-8' codec can't decode byte 0xed in position 16: invalid continuation byte
     table['name'] = table['name'].str.decode('utf8', errors='ignore')
