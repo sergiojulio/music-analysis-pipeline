@@ -9,6 +9,8 @@ import datetime
 if __name__ == "__main__":
     # sc = SparkContext(appName="CSV2Parquet")
     # sqlContext = SQLContext(sc)
+    # sc = SparkContext(appName="CSV2Parquet")
+    # sqlContext = SQLContext(sc)
     spark = SparkSession.builder.appName("homologacion").getOrCreate()
     sc = spark.sparkContext
 
