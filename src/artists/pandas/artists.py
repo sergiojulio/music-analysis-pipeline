@@ -3,7 +3,7 @@ import pandas as pd
 
 # env path db, 
 # path raw file name, 
-# arg table, 
+# arg table,
 
 
 def pandas_sqlite_csv():

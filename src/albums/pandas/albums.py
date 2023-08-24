@@ -17,6 +17,7 @@ def pandas_sqlite_csv():
     # ""
     table['id'] = table['id'].str.decode('utf8')
     # UnicodeDecodeError: 'utf-8' codec can't decode byte 0xed in position 16: invalid continuation byte
+    #
     table['name'] = table['name'].str.decode('utf8', errors='ignore')
     table['album_group'] = table['album_group'].str.decode('utf8')
     table['album_type'] = table['album_type'].str.decode('utf8')
