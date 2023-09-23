@@ -37,18 +37,6 @@ if __name__ == "__main__":
         "/raw/tracks.csv")
 
     # change column type
-    """
-    ERROR Utils: Aborting task
-    org.apache.spark.SparkUpgradeException: You may get a different result due to the upgrading of Spark 3.0: 
-    writing dates before 1582-10-15 or timestamps before 1900-01-01T00:00:00Z into Parquet INT96
-    files can be dangerous, as the files may be read by Spark 2.x or legacy versions of Hive
-    later, which uses a legacy hybrid calendar that is different from Spark 3.0+'s Proleptic
-    Gregorian calendar. See more details in SPARK-31404. You can set spark.sql.parquet.int96RebaseModeInWrite to 'LEGACY' to
-    rebase the datetime values w.r.t. the calendar difference during writing, to get maximum
-    interoperability. Or set spark.sql.parquet.int96RebaseModeInWrite to 'CORRECTED' to write the datetime values as it is,
-    if you are 100% sure that the written files will only be read by Spark 3.0+ or other
-    systems that use Proleptic Gregorian calendar.    
-    """
 
     df = df.withColumn('process_date',
                        func.lit(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")).cast(TimestampType()))
