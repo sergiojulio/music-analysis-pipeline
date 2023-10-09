@@ -24,7 +24,8 @@ def pandas_sqlite_csv():
     # Dq..
     table.loc[table['release_date'] == 0, 'release_date'] = -2208902400000
     table.loc[table['release_date'] < -2208902400000, 'release_date'] = -2208988800000
-    #
+    # aqui hay que generar un hash que sea el id
+    # luego en tabla link artist_genre hay que reemplazar el name por el id
     table['popularity'] = table['popularity']
     # """
     table.to_csv('/home/sergio/dev/python/music-analysis-pipeline/datalake/raw/tracks.csv',
