@@ -8,11 +8,9 @@ import pandas as pd
 
 def pandas_sqlite_csv():
     conn = sqlite3.connect('/home/sergio/dev/python/music-analysis-pipeline/inputs/spotify.sqlite')
-    # Could not decode to UTF-8 column 'name'
+
     conn.text_factory = bytes
-    # cursor = conn.cursor()
-    # weirdos chars
-    # conn.text_factory = str
+
     table = pd.read_sql('SELECT id FROM genres', conn)
     # ""
     table['name'] = table['id'].str.decode('utf8', errors='ignore')
