@@ -13,20 +13,11 @@ def pandas_sqlite_csv():
     # cursor = conn.cursor()
     # weirdos chars
     # conn.text_factory = str
-    table = pd.read_sql('SELECT id, name, album_group, album_type, release_date, popularity FROM tracks', conn)
-    # ""
-    table['id'] = table['id'].str.decode('utf8')
-    # UnicodeDecodeError: 'utf-8' codec can't decode byte 0xed in position 16: invalid continuation byte
-    #
+    table = pd.read_sql('SELECT id, disc_number, duration, explicit, audio_feature_id, name, preview_url, '
+                        'track_number, popularity, is_playable FROM tracks', conn)
+
     table['name'] = table['name'].str.decode('utf8', errors='ignore')
-    table['album_group'] = table['album_group'].str.decode('utf8')
-    table['album_type'] = table['album_type'].str.decode('utf8')
-    # Dq..
-    table.loc[table['release_date'] == 0, 'release_date'] = -2208902400000
-    table.loc[table['release_date'] < -2208902400000, 'release_date'] = -2208988800000
-    #
-    table['popularity'] = table['popularity']
-    # """
+
     table.to_csv('/home/sergio/dev/python/music-analysis-pipeline/datalake/raw/tracks.csv',
                  index=False, encoding='utf-8')
 

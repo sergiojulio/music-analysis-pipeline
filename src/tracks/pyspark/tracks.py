@@ -18,13 +18,23 @@ if __name__ == "__main__":
     spark = SparkSession.builder.appName("homologacion").getOrCreate()
     sc = spark.sparkContext
 
+    """
+    id, disc_number, duration, explicit, auidio_feture_id, name
+    preview_url, '
+    'track_numer, popularity, is_playable
+    """
+
     schema = StructType([
         StructField("id", StringType(), True),
+        StructField("disc_number", IntegerType(), True),
+        StructField("duration", IntegerType(), True),
+        StructField("explicit", IntegerType(), True),
+        StructField("auidio_feture_id", StringType(), True),
         StructField("name", StringType(), True),
-        StructField("album_group", StringType(), True),
-        StructField("album_type", StringType(), True),
-        StructField("release_date", StringType(), True),
-        StructField("popularity", DecimalType(12, 0), True)
+        StructField("preview_url", StringType(), True),
+        StructField("track_numer", StringType(), True),
+        StructField("popularity", IntegerType(), True),
+        StructField("is_playable", StringType(), True)
     ])
 
     dirname = os.path.dirname(os.path.abspath(__file__))
@@ -40,9 +50,7 @@ if __name__ == "__main__":
 
     df = df.withColumn('process_date',
                        func.lit(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")).cast(TimestampType()))
-    df = df.withColumn("_release_date", func.to_timestamp(func.col("release_date") / 1000).cast(TimestampType()))
-    df = df.drop('release_date')
-    df = df.withColumnRenamed("_release_date", "release_date")
+
 
     parquetfilename = os.path.join(dirname, 'output.parquet')
 
