@@ -13,8 +13,7 @@ udf_get_date = func.udf(get_current_datetime, returnType=StringType())
 """
 
 if __name__ == "__main__":
-    # sc = SparkContext(appName="CSV2Parquet")
-    # sqlContext = SQLContext(sc)
+
     spark = SparkSession.builder.appName("homologacion").getOrCreate()
     sc = spark.sparkContext
 
@@ -39,18 +38,13 @@ if __name__ == "__main__":
 
     dirname = os.path.dirname(os.path.abspath(__file__))
 
-    # csvfilename = os.path.join(dirname, 'Temp.csv')
-
     df = spark.read.option("header", True).format("csv").schema(schema).option("delimiter", ',').load(
         "/home/sergio/dev/python/music"
         "-analysis-pipeline/datalake"
         "/raw/tracks.csv")
 
-    # change column type
-
     df = df.withColumn('process_date',
                        func.lit(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")).cast(TimestampType()))
-
 
     parquetfilename = os.path.join(dirname, 'output.parquet')
 
