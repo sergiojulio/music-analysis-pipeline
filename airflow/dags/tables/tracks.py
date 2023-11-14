@@ -8,7 +8,6 @@ args = {
     'start_date': days_ago(1)
 }
 
-# defining the dag object
 dag = DAG(
     dag_id='extract-tracks',
     default_args=args,
