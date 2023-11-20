@@ -10,7 +10,7 @@ args = {
 
 # defining the dag object
 dag = DAG(
-    dag_id='extract-audio_featura',
+    dag_id='extract-audio_feature',
     default_args=args,
     schedule_interval=None
 )
@@ -19,7 +19,7 @@ with dag:
     step1 = BashOperator(
                 task_id='step1', 
                 bash_command='source /home/sergio/dev/python/music-analysis-pipeline/.env/bin/activate && python '
-                             '/home/sergio/dev/python/music-analysis-pipeline/src/audio_featura/pandas/audio_featura.py',
+                             '/home/sergio/dev/python/music-analysis-pipeline/src/audio_feature/pandas/audio_feature.py',
             )
     
     step2 = BashOperator(
@@ -27,7 +27,7 @@ with dag:
                 bash_command="""
                                 export JAVA_HOME="/usr/lib/jvm/java-11-openjdk-amd64/";
                                 export PATH=$PATH:$JAVA_HOME/bin;
-                                spark-submit /home/sergio/dev/python/music-analysis-pipeline/src/audio_featura/pyspark/audio_featura.py
+                                spark-submit /home/sergio/dev/python/music-analysis-pipeline/src/audio_feature/pyspark/audio_feature.py
                             """,
             )
 
