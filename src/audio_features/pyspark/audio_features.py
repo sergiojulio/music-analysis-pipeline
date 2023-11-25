@@ -1,39 +1,31 @@
 from pyspark.sql import SparkSession
 from pyspark.sql import functions as func
 from pyspark.sql.functions import lit
-from pyspark.sql.types import StructType, StructField, StringType, IntegerType, DecimalType, TimestampType
+from pyspark.sql.types import StructType, StructField, ByteType, BooleanType, ByteType, DoubleType, StringType, IntegerType, TimestampType
 import os
 import datetime
-
-"""
-def get_current_datetime():
-    now = datetime.datetime.now()
-    return '123456'
-udf_get_date = func.udf(get_current_datetime, returnType=StringType())
-"""
 
 if __name__ == "__main__":
 
     spark = SparkSession.builder.appName("homologacion").getOrCreate()
     sc = spark.sparkContext
 
-    """
-    id, disc_number, duration, explicit, auidio_feture_id, name
-    preview_url, '
-    'track_numer, popularity, is_playable
-    """
-
     schema = StructType([
         StructField("id", StringType(), True),
-        StructField("disc_number", IntegerType(), True),
+        StructField("acousticness", DoubleType(), True),
+        StructField("analysis_url", StringType(), True),
+        StructField("danceability", DoubleType(), True),
         StructField("duration", IntegerType(), True),
-        StructField("explicit", IntegerType(), True),
-        StructField("auidio_feture_id", StringType(), True),
-        StructField("name", StringType(), True),
-        StructField("preview_url", StringType(), True),
-        StructField("track_numer", StringType(), True),
-        StructField("popularity", IntegerType(), True),
-        StructField("is_playable", StringType(), True)
+        StructField("energy", StringType(), True),
+        StructField("instrumentalness", DoubleType(), True),
+        StructField("key", ByteType(), True),
+        StructField("liveness", DoubleType(), True),
+        StructField("loudness", DoubleType(), True),
+        StructField("mode", BooleanType(), True),
+        StructField("speechiness", DoubleType(), True),
+        StructField("tempo", DoubleType(), True),
+        StructField("time_signature", ByteType(), True),
+        StructField("valence", DoubleType(), True)
     ])
 
     dirname = os.path.dirname(os.path.abspath(__file__))
@@ -51,4 +43,3 @@ if __name__ == "__main__":
     df.write.mode('overwrite').parquet(
         '/home/sergio/dev/python/music-analysis-pipeline/datalake/parquet/audio_features.parquet')
 
-    df.show()

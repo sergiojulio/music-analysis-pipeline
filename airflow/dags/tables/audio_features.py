@@ -19,7 +19,8 @@ with dag:
     step1 = BashOperator(
                 task_id='step1', 
                 bash_command='source /home/sergio/dev/python/music-analysis-pipeline/.env/bin/activate && python '
-                             '/home/sergio/dev/python/music-analysis-pipeline/src/audio_features/pandas/audio_features.py',
+                             '/home/sergio/dev/python/music-analysis-pipeline/src/audio_features/pandas'
+                             '/audio_features.py',
             )
     
     step2 = BashOperator(
