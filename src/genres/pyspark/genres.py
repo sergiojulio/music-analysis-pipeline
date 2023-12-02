@@ -11,8 +11,7 @@ if __name__ == "__main__":
     sc = spark.sparkContext
 
     schema = StructType([
-        StructField("id", StringType(), True),
-        StructField("name", StringType(), True),
+        StructField("id", StringType(), True)
     ])
 
     dirname = os.path.dirname(os.path.abspath(__file__))
@@ -21,6 +20,13 @@ if __name__ == "__main__":
         "/home/sergio/dev/python/music"
         "-analysis-pipeline/datalake"
         "/raw/genres.csv")
+
+    # hash id
+    # table['id'] = abs(table['id'].str.decode('utf8').apply(hash))
+    df = df.withColumn('name', func.col("id"))
+    df = df.withColumn("_id", func.abs(func.hash(func.col("id"))))
+    df = df.drop('id')
+    df = df.withColumnRenamed("_id", "id")
 
     df = df.withColumn('process_date',
                        func.lit(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")).cast(TimestampType()))

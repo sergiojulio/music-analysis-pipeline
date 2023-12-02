@@ -12,9 +12,8 @@ def pandas_sqlite_csv():
     conn.text_factory = bytes
 
     table = pd.read_sql('SELECT id FROM genres', conn)
-    # ""
-    table['name'] = table['id'].str.decode('utf8', errors='ignore')
-    table['id'] = abs(table['id'].str.decode('utf8').apply(hash))
+
+    table['id'] = table['id'].str.decode('utf8', errors='ignore')
 
     # """
     table.to_csv('/home/sergio/dev/python/music-analysis-pipeline/datalake/raw/genres.csv',
