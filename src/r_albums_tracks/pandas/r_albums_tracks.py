@@ -5,7 +5,7 @@ import pandas as pd
 def pandas_sqlite_csv():
     conn = sqlite3.connect('/home/sergio/dev/python/music-analysis-pipeline/inputs/spotify.sqlite')
 
-    conn.text_factory = bytes
+    # conn.text_factory = bytes
 
     for chunk in pd.read_sql('SELECT album_id, track_id FROM r_albums_tracks', conn, chunksize=100000):
         # chunk['id'] = chunk['id'].str.decode('utf8', errors='ignore')

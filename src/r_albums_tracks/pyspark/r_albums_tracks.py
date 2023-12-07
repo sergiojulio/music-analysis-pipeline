@@ -12,7 +12,7 @@ if __name__ == "__main__":
 
     schema = StructType([
         StructField("album_id", StringType(), True),
-        StructField("artist_id", IntegerType(), True)
+        StructField("track_id", StringType(), True)
     ])
 
     dirname = os.path.dirname(os.path.abspath(__file__))
