@@ -20,7 +20,7 @@ if __name__ == "__main__":
     df = spark.read.option("header", True).format("csv").schema(schema).option("delimiter", ',').load(
         "/home/sergio/dev/python/music"
         "-analysis-pipeline/datalake"
-        "/raw/r_albums_artists.csv")
+        "/raw/r_albums_tracks.csv")
 
     df = df.withColumn('process_date',
                        func.lit(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")).cast(TimestampType()))
@@ -28,5 +28,5 @@ if __name__ == "__main__":
     parquetfilename = os.path.join(dirname, 'output.parquet')
 
     df.write.mode('overwrite').parquet(
-        '/home/sergio/dev/python/music-analysis-pipeline/datalake/parquet/r_albums_artists.parquet')
+        '/home/sergio/dev/python/music-analysis-pipeline/datalake/parquet/r_albums_tracks.parquet')
 
