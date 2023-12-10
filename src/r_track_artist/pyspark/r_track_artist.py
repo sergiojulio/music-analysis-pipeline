@@ -11,8 +11,8 @@ if __name__ == "__main__":
     sc = spark.sparkContext
 
     schema = StructType([
-        StructField("album_id", StringType(), True),
-        StructField("track_id", StringType(), True)
+        StructField("track_id", StringType(), True),
+        StructField("artist_id", StringType(), True)
     ])
 
     dirname = os.path.dirname(os.path.abspath(__file__))
@@ -20,7 +20,7 @@ if __name__ == "__main__":
     df = spark.read.option("header", True).format("csv").schema(schema).option("delimiter", ',').load(
         "/home/sergio/dev/python/music"
         "-analysis-pipeline/datalake"
-        "/raw/r_albums_tracks.csv")
+        "/raw/r_track_artist.csv")
 
     df = df.withColumn('process_date',
                        func.lit(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")).cast(TimestampType()))
@@ -28,5 +28,5 @@ if __name__ == "__main__":
     parquetfilename = os.path.join(dirname, 'output.parquet')
 
     df.write.mode('overwrite').parquet(
-        '/home/sergio/dev/python/music-analysis-pipeline/datalake/parquet/r_albums_tracks.parquet')
+        '/home/sergio/dev/python/music-analysis-pipeline/datalake/parquet/r_track_artist.parquet')
 
