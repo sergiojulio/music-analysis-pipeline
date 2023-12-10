@@ -9,10 +9,10 @@ def pandas_sqlite_csv():
 
     # delete cvs file if exists
 
-    for chunk in pd.read_sql('SELECT album_id, track_id FROM r_albums_tracks', conn, chunksize=100000):
+    for chunk in pd.read_sql('SELECT genre_id, artist_id FROM r_artist_genre', conn, chunksize=100000):
         # chunk['id'] = chunk['id'].str.decode('utf8', errors='ignore')
 
-        chunk.to_csv('/home/sergio/dev/python/music-analysis-pipeline/datalake/raw/r_albums_tracks.csv',
+        chunk.to_csv('/home/sergio/dev/python/music-analysis-pipeline/datalake/raw/r_artist_genre.csv',
                      index=False, encoding='utf-8', mode='a')  # be carefoul with a mode, its adds row to current file
 
 
