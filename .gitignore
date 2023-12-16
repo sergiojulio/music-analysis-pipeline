@@ -134,3 +134,4 @@ outputs/
 tmp/
 datalake/
 .idea/
+run.sh
