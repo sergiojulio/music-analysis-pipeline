@@ -1,0 +1,15 @@
+
+version: 2
+
+models:
+  - name: top_artists_model
+    description: "Top artists report"
+    columns:
+      - name: id
+        #description: "The primary key for this table"
+        #tests:
+        #  - unique
+        #  - not_null
+      - name: name
+      - name: popularity
+      - name: followers
