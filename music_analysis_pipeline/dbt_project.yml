@@ -24,6 +24,7 @@ clean-targets:         # directories to be removed by `dbt clean`
 
 vars:
   artists: "read_parquet('/home/sergio/dev/python/music-analysis-pipeline/datalake/parquet/artists.parquet/*.parquet')"
+  genre: "read_parquet('/home/sergio/dev/python/music-analysis-pipeline/datalake/parquet/genre.parquet/*.parquet')"
 
 # Configuring models
 # Full documentation: https://docs.getdbt.com/docs/configuring-models
