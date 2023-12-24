@@ -18,7 +18,15 @@ clean-targets:
   - target
   - dbt_packages
 vars:
+  albums: read_parquet('/home/sergio/dev/python/music-analysis-pipeline/datalake/parquet/albums.parquet/*.albums')  
   artists: read_parquet('/home/sergio/dev/python/music-analysis-pipeline/datalake/parquet/artists.parquet/*.parquet')
-  genre: read_parquet('/home/sergio/dev/python/music-analysis-pipeline/datalake/parquet/genre.parquet/*.parquet')
+  audio_features: read_parquet('/home/sergio/dev/python/music-analysis-pipeline/datalake/parquet/audio_features.parquet/*.parquet')
+  genres: read_parquet('/home/sergio/dev/python/music-analysis-pipeline/datalake/parquet/genres.parquet/*.parquet')
+  r_albums_artists: read_parquet('/home/sergio/dev/python/music-analysis-pipeline/datalake/parquet/r_albums_artists.parquet/*.parquet')
+  r_albums_tracks: read_parquet('/home/sergio/dev/python/music-analysis-pipeline/datalake/parquet/r_albums_tracks.parquet/*.parquet')
+  r_artist_genre: read_parquet('/home/sergio/dev/python/music-analysis-pipeline/datalake/parquet/r_artist_genre.parquet/*.parquet')
+  r_track_artist: read_parquet('/home/sergio/dev/python/music-analysis-pipeline/datalake/parquet/r_track_artist.parquet/*.parquet')
+  radioheadve: read_parquet('/home/sergio/dev/python/music-analysis-pipeline/datalake/parquet/radioheadve.parquet/*.parquet')
+  tracks: read_parquet('/home/sergio/dev/python/music-analysis-pipeline/datalake/parquet/tracks.parquet/*.parquet')
 models:
   music_analysis_pipeline: null
