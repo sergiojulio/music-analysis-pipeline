@@ -1,7 +1,7 @@
 from pyspark.sql import SparkSession
 from pyspark.sql import functions as func
 from pyspark.sql.functions import lit
-from pyspark.sql.types import StructType, StructField, StringType, IntegerType, DecimalType, TimestampType
+from pyspark.sql.types import StructType, StructField, StringType, LongType, DecimalType, TimestampType
 import os
 import datetime
 
@@ -23,6 +23,7 @@ if __name__ == "__main__":
         StructField("artist", StringType(), True),
         StructField("album", StringType(), True),
         StructField("track", StringType(), True),
+        StructField("id", LongType(), True)
     ])
 
     dirname = os.path.dirname(os.path.abspath(__file__))
