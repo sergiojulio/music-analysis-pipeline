@@ -10,13 +10,9 @@ def pandas_sqlite_csv():
     conn = sqlite3.connect('/home/sergio/dev/python/music-analysis-pipeline/inputs/radioheadve.sqlite')
     # Could not decode to UTF-8 column 'name'
     conn.text_factory = bytes
-    # cursor = conn.cursor()
-    # weirdos chars
-    # conn.text_factory = str
+
     table = pd.read_sql('SELECT uts, datetime, artist, album, track FROM tracks', conn)
 
-    # UnicodeDecodeError: 'utf-8' codec can't decode byte 0xed in position 16: invalid continuation byte
-    #
     table['datetime'] = table['datetime'].str.decode('utf8')
     table['artist'] = table['artist'].str.decode('utf8', errors='ignore')
     table['album'] = table['album'].str.decode('utf8')
@@ -24,7 +20,7 @@ def pandas_sqlite_csv():
     table['id'] = table['uts'].str.decode('utf8')
 
     table = table.drop('uts', axis=1)
-    # """
+
     table.to_csv('/home/sergio/dev/python/music-analysis-pipeline/datalake/raw/radioheadve.csv',
                  index=False, encoding='utf-8')
 
