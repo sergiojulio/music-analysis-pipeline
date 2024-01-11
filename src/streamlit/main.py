@@ -5,7 +5,7 @@ con = duckdb.connect(database='/home/sergio/dev/python/music-analysis-pipeline/d
 
 st.set_page_config(layout="wide")
 
-st.title('Dickdb + Streamlit')
+st.title('Duckdb + Streamlit')
 
 df = con.execute("""
     SELECT * 
