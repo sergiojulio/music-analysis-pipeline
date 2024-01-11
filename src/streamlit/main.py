@@ -7,3 +7,10 @@ st.set_page_config(layout="wide")
 
 st.title('Dickdb + Streamlit')
 
+df = con.execute("""
+    SELECT * 
+    FROM top_artists_model 
+    LIMIT 10
+    """).df()
+
+st.table(df)
