@@ -16,7 +16,7 @@ df = con.execute("""
 st.table(df)
 
 st.button("Reset", type="primary")
-if st.button('Say hello'):
-    st.write('Why hello there')
+if st.button('Say hello to the angels'):
+    st.write('Why hello to the angels?')
 else:
     st.write('Goodbye')
