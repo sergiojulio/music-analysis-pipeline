@@ -17,7 +17,7 @@ st.table(df)
 
 st.button("Reset", type="primary")
 if st.button('Say hello to the angels'):
-    st.write('Why hello to the angels?')
+    st.write('Turn on the bright lights')
 else:
     st.write('Goodbye')
     st.write('Its over')
